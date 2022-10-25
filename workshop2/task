@@ -1,0 +1,79 @@
+Practical 2: Implementing an Abstraction: Rock, Paper, Scissors
+General Instructions
+All submissions for the practical assignments should be under version control. Submission is through Gradescope.
+
+If you get stuck on one of the hidden test cases and really cannot resolve it yourself, please feel free to ask the practical tutors for guidance as to how to fully test your code.  You will need to explain what testing you have already done (boundary cases, unit testing, etc)
+
+Problem Description
+Objective
+This practical tests your skills of writing classes. It also requires planned application of logic and code structure.
+
+Problem
+In this practical assignment, you are going to implement a simple Rock, Paper, Scissors game in C++. Two players compete and, independently, choose one of Rock, Paper, or Scissors. They then simultaneously declare their choices. The winner of the game is determined by comparing the choices of the players. Rock beats Scissors, Scissors beats Paper, Paper beats Rock.
+
+Your implementation needs to adhere to an approved* abstraction and interface for the human player, referee and computer player. One possible abstraction and interface based on this abstraction is shown below.  This is the one we discussed in this week's workshp:
+
+rps-abstraction.png
+
+A possible interface for my RPS game based on this abstraction.  
+
+HumanPlayer
+
+HumanPlayer( ); // constructor
+char makeMove( );  
+
+ComputerPlayer
+
+ComputerPlayer( ); // constructor
+char makeMove( );  
+
+Referee
+
+Referee( ); // constructor
+char refGame(HumanPlayer player1, ComputerPlayer player2)
+// returns the outcome for player1:  'W', 'L' or 'T' (Win, Lose, Tie)
+
+You can choose to implement this interface.  Alternatively, if your workshop agreed to alternate UMLs approved during your workshop session, you may also implement those interfaces.
+
+Your submission should contain
+
+Human.cpp
+Human.h
+
+Computer.cpp
+Computer.h
+
+Referee.cpp
+Referee.h
+The next practical assignment will build on this practical so you should make your code as extendable as possible. In Practical 3, we will consider more complex computer strategies.
+
+Implementation Details
+Computer Player
+For this assignment, to make things simple, we assume that the computer player only plays Rock.
+
+Human Player
+The human player gets its move from the keyboard (ie each time the human player makes a move it will print the prompt: "Enter move: " and expect the user to enter a single character).  A move is a character among R, P, and S.
+
+Gradescope marking is strict on this, ensure your prompt matches this exactly and does not print any other prompts.
+
+Enter move: R
+Referee
+The referee class will match two players and return their game result. For this practical, your referee class matches the human player and the dumb computer player (who only plays rock). In Practical 3, your referee class will need to match different computer players against each other.
+
+The main
+The main program will create the human, referee and computer and then run some number of rock paper scissors games (up to the main function to decide how many). 
+
+Main will make a request to the referee object to referee a game.  Main will then print the returned result.   
+
+For example, if the main decides to play 4 games, and the human player (first player) plays S P R S, the output should be “L W T L” (L = human loses; W = human wins; T = tie). Another example: if the human plays R R P S, the output should be “T T W L”.  (recall the dump computer player always plays rock).
+
+The main purpose of this practical is for you to practise organizing and writing classes and to recognise how your implementation of your classes can change without having to change the code in main.
+
+In testing, your code will be tested agains our own testing main which will only compile against the approved interfaces.
+
+Marking Scheme
+• Functionality (3 marks):
+
+- Classes implement the interface - ie they will compile with a main that uses the given or other approved* classes (1 mark)
+– Passing public test cases (1 mark)
+– Passing hidden test cases (1 mark)
