@@ -1,0 +1,52 @@
+General Instructions
+All submissions for the practical assignments should be under version control. Submission procedure remains the same with the first practical assignment.
+
+The directory under version control for this assignment should be named as
+https://version-control.adelaide.edu.au/svn/aXXXXXXX/20YY/SEM/adds/assignment9/
+where aXXXXXXX is your student ID, YY is the current year and SEM is the semester (s1, s2 or ss for summer)
+ 
+If you get stuck on one of the hidden test cases and really cannot resolve it yourself, please feel free to ask the practical tutors for hints.
+ 
+We encourage you to finish your work before the practical session and take the session as
+consulting time.
+Problem Description
+Objective
+This practical will test your knowledge on lists, stacks and queues.
+ 
+Design
+Plan how you are going to solve the problem and test your implementation with the test cases you designed based on the stages below. Testing Hint: it’s easier if you test things as a small piece of code, rather than building a giant lump of code that doesn’t compile or run correctly. As part of your design, you should also sketch out how you are going to build and test the code.
+ 
+Polish prefix
+Polish notation, also known as Polish prefix notation or simply prefix notation, is a form of notation for logic, arithmetic, and algebra. Its distinguishing feature is that it places operators to the left of their operands.
+ 
+The expression for adding the numbers 1 and 2, in prefix notation, is written as “+ 1 2” rather than “1 + 2”. In more complex expressions, the operands may be nontrivial expressions including operators of their own. For instance, the expression that would be written in conventional infix notation as (5 + 6) * 7 can be written in prefix as * (+ 5 6) 7
+ 
+In this assignment, we only care about binary operators: + - * and /.
+ 
+For binary operators, prefix representation is unambiguous and bracketing the prefix expression is unnecessary. As such, the previous expression can be further simplified to * + 5 6 7
+ 
+The processing of the product is deferred until its two operands are available (i.e., 5 plus 6, then multiplies the result with 7). As with any notation, the innermost expressions are evaluated first, but in prefix notation this ”innermost-ness” is conveyed by order rather than bracketing.
+ 
+Your task is to create a class that convert a prefix expression to a standard form (otherwise known as infix) and compute the prefix expression.
+Main function
+The test script will compile your code using
+g++ -o main.out -std=c++11 -O2 -Wall *.cpp
+ 
+It is your responsibility to ensure that your code compiles on the university system. g++ has too many versions, so being able to compile on your laptop does not guarantee that it compiles on the university system. You are encouraged to debug your code on a lab computer (or use SSH).
+ 
+Create a main function that takes in one line. The line contains a list of operators and operands separated by spaces. The input doesn’t contain parenthesis. An operator is a character from +, -, *, and /. An operand is a nonnegative integer from 0 to 99. You are asked to convert the prefix expression to an infix form and output its value as well. If the expression is not a valid prefix expression, your program should output “Error”.
+Sample input:  * - 5 6 7
+Sample output:  (5 - 6) * 7 = -7
+  
+Sample input: * 5
+Sample output: Error
+ 
+Sample input: * 5 6 7
+Sample output: Error
+ 
+Marking Scheme
+Functionality (3 marks):
+Passing public test cases (2 mark)
+Passing hidden test cases (1 mark)
+(Note that as this practical is open ended on the structures you choose, there is no interface test.  You are encouraged to discuss designs and possible data structures to apply with your peers)
+
