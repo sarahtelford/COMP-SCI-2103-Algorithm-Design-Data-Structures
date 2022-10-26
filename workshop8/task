@@ -1,0 +1,85 @@
+General Instructions
+All submissions for the practical assignments should be under version control. Submission procedure remains the same with the first practical assignment.
+
+The directory under version control for this assignment should be named as
+https://version-control.adelaide.edu.au/svn/aXXXXXXX/20YY/SEM/adds/assignment8/
+where aXXXXXXX is your student ID, YY is the current year and SEM is the semester (s1, s2 or ss for summer)
+ 
+If you get stuck on one of the hidden test cases and really cannot resolve it yourself, please feel free to ask the practical tutors for hints.
+ 
+We encourage you to finish your work before the practical session and take the session as consulting time.
+ 
+Problem Description
+Objective
+This practical will test your capability of implementing a linked list.
+ 
+Design
+Think of how you are going to solve the problem and test your implementation with the test cases you designed based on the stages below.
+ 
+Testing Hint: it’s easier if you test things as a small piece of code, rather than building a giant lump of code that doesn’t compile or run correctly. As part of your design, you should also sketch out how you are going to build and test the code.
+ 
+Problem
+Linked lists are dynamic data structures that allow storing a list of items in separate places in the memory. Each item of the list, together with the address of the next item, is placed in one object of type Node (find the description below). The last node of the list should include the last item and a null pointer (NULL or nullptr).
+ 
+Lists, as abstract data types, can be implemented by different structures, including arrays, vectors and linked lists. In this practical, you should write the code for two classes named LinkedList, and Node.  Do not use arrays or vectors to store values in your LinkedList.
+ 
+You must include separate header and implementation files for both classes. The class Node should consist of two member variables, an integer data and a pointer to Node next, and 5 functions, a constructor, and getter and setter for the two member variables.
+ 
+The class LinkedList must have only one member variable: head, which is of type pointer to Node. If the list is empty, head should contain NULL or nullptr.  It should also have at least the following member functions. Note that add functions should construct nodes from the heap, and delete functions should manually delete the one that is removed from the list. Don’t forget to write test cases for each function and ensure that the tests pass before progressing to the next function.
+void addFront(int newItem) : The function inserts a new node, containing the newItem, at the beginning of the list.
+void addEnd(int newItem) : The function inserts a new node, containing the newItem, at the end of the list.
+void addAtPosition(int position, int newItem) : The function inserts a new node, containing the newItem, such that it is the position-th member of the list. i.e. we assume the first element of the list is in position 1. If position is larger than the size of the list, the new item is added to the end of the list. If position < 1, the new item is added at the beginning of the list.
+int search(int item) : The function searches the list for the first instance of the  item, and if found, both prints the position of the of the item (followed by a space) and returns the position of the item in the list (positions start from 1). If not found, both prints 0 (followed by a space) and returns 0. Note that the returning type is different from what was explained in the search function in the lecture.
+void deleteFront() : The function deletes the first element of the list.
+void deleteEnd() : The function deletes the last element of the list.
+void deletePosition(int position) : The function deletes the element at the given position of the list. If the position < 1 or it is larger than the size of the list, only print ”outside range”.
+int getItem(int position) : The function both prints the value of the item (followed by a space) and returns the value of the item at the given position of the list, If beyond the size of the array, both prints std::numeric_limits < int >::max() (followed by a space) and returns std::numeric_limits< int >::max(). You should include <limits> for this. Take a look at
+http://www.cplusplus.com/reference/limits/numeric_limits/ if you need.
+void printItems() : The function prints the value of the items of the list from head to tail. In case of an empty list, it does not print anything
+A constructor with no parameters, which makes an empty list.
+A constructor that takes an array of integers and makes a linked list, containing all the elements of the array, in the same order. As the second parameter, it takes the size of the array.
+A destructor that manually deletes all the elements that are still in the list.
+Note that the printing in the functions search and getItem is for the purpose of easy testing.
+ 
+Main function
+The test script will compile your code using
+g++ -o main.out -std=c++11 -O2 -Wall *.cpp
+  
+It is your responsibility to ensure that your code compiles on the university system. g++ has too many versions, so being able to compile on your laptop does not guarantee that it compiles on the university system. You are encouraged to debug your code on a lab computer (or use SSH).
+ 
+You are asked to create a main function (main.cpp). It takes in one line of input.
+  
+int1 int2 ... intn FUNCTION_CODE param1 param2
+ 
+int1, until intn are integers, separated by space, which should be placed in an integer array, and passed to the linked list constructor. For simplicity, we assume that the size of this array never exceeds 100; therefore, you can take a static array with the size of 100.
+ 
+After the elements of the list, the input consists of a string, denoting a function, followed by its parameters. The string is one of these:
+AF standing for addFront
+AE standing for addEnd
+AP standing for addAtPosition
+S standing for search
+DF standing for deleteFront
+DE standing for deleteEnd
+DP standing for deletePosition
+GI standing for getItem
+Call the indicated function with its parameter. If the function has only one parameter, then the last integer value from the input is not used. At the end, call the function printItems, to produce the required output.
+  
+Sample input: 5 2 7 10 AP 3 9
+expected output: 5 2 9 7 10
+Sample input: 3 4 2 1 DP 3 0
+expected output: 3 4 1
+Sample input: 45 20 2 10 GI 3 0
+expected output: 2 45 20 2 10
+ 
+Files to Submit
+main.cpp
+LinkedList.cpp
+LinkedList.h
+Node.cpp
+Node.h
+
+Marking Scheme
+Functionality (3 marks):
+Meets interface requirements and OO Design Principles (1 mark) 
+Passing public test cases (1 mark)
+Passing hidden test cases (1 mark)
