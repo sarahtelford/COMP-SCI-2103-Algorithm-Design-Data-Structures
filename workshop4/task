@@ -1,0 +1,78 @@
+General Instructions
+All submissions for the practical assignments should be under version control. Submission procedure remains the same with the first practical assignment.
+
+ 
+The directory under version control for this assignment should be named as
+https://version-control.adelaide.edu.au/svn/aXXXXXXX/20YY/SEM/adds/assignment4/
+where aXXXXXXX is your student ID, YY is the current year and SEM is the semester (s1, s2 or ss for summer)
+ 
+If you get stuck on one of the hidden test cases and really cannot resolve it yourself, please feel free to ask the practical tutors for hints.
+ 
+We encourage you to finish your work before the practical session and take the session as
+consulting time.
+Problem Description
+Objective
+This practical will test your knowledge of recursion, and will require thinking through the
+problems carefully in order to create a design.
+ 
+Testing Hint: it’s easier if you test things as a small piece of code, rather than building a giant lump of code that doesn’t compile or run correctly. As part of your design, you should also sketch out how you are going to build and test subparts of the code.
+ 
+Problem
+In this practical, you are going to play around things in the reversing order and implement
+a program for calculating the number of Trucks for the Truck problem.
+ 
+1) Reversing the input
+As the first part of this practical, you are going to implement a class called Reverse
+which has two recursive functions: reverseDigit and reverseString
+ 
+int reverseDigit(int value) : The function takes in an non-negative int value and reverses the digits using recursion. The “reversed” int is then returned.
+ 
+For example,
+reverseDigit(12345)
+returns
+54321
+ 
+string reverseString(string letters) : The function takes in a std::string and returns the reversed string.
+ 
+Note that, you must make use of recursion in both functions. This means you need
+to work out how to reduce the problem and what the base case should be.
+ 
+2) Calculating trucks needed
+Implement a recursive solution to the truckloads problem discussed in lecture.  The details of the problem can be found at: http://topcoder.bgcoder.com/print.php?id=1145Links to an external site.
+Pay particular attention to the specified interface.
+ 
+The calculation of the Truckloads must be implemented recursively to receive credit.  Also note that the constraints given in the topcoder problem do not apply (values for crates and truck capacity can be outside of the given ranges).
+ 
+3) More Efficient Truckloads
+ 
+Reproduce your Truckloads class in another class called EfficientTruckloads Make this class efficient by using memoisation to store values that have been calculated. The recursive function should not be called for a result that has already been calculated.
+ 
+Handling errors
+Your program may encounter errors, and it should be able to handle them. Modify your code so that when errors do occur, it prints out “ERROR” and does nothing more for that part of the test.
+ 
+For instance, for input “A” to the reverseDigit function, the output would be “ERROR” (since A is not a non-negative integer).
+ 
+Main function
+You are asked to create a main function (main.cpp). It takes one line of input.  The input consists of a non-negative integer, i,  a string, s, a non-negative integer, numCrates, and another non-negative integer loadSize. The string and integers will be separated by spaces. The output should be in one line as well. It should be: 
+the reverse of i, the reverse of s, and the value returned from numTrucks from Truckloads and EfficentTruckloads respectively. The output should be separated by spaces as
+well.
+ 
+Sample input 1: 12345 avalanche 4 2
+Sample output 1: 54321 ehcnalava 2 2
+Sample input 2: -14 appa 10 2
+Sample output 2: ERROR appa 6 6
+Sample input 3: 11900 aaabaa sa 10
+Sample output 3: 911 aabaaa ERROR ERROR
+Marking Scheme
+Your submission should contain at least:
+main.cpp
+Reverse.cpp
+TruckLoads.cpp
+EfficientTruckLoads.cpp
+and header files.
+Marking Scheme
+Interface (1 mark):
+– Compiles with test main which uses interface
+Functionality (2 marks):
+– Passing public test cases (1 mark)
+– Passing hidden test cases (1 mark)
