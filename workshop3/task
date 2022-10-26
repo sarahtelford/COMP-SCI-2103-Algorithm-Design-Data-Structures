@@ -1,0 +1,59 @@
+General Instructions
+All submissions for the practical assignments should be under version control. Submission procedure remains the same with the first practical assignment.
+
+ 
+The directory under version control for this assignment should be named as
+https://version-control.adelaide.edu.au/svn/aXXXXXXX/20YY/SEM/adds/assignment3/
+where aXXXXXXX is your student ID, YY is the current year and SEM is the semester (s1, s2 or ss for summer)
+ 
+If you get stuck on one of the hidden test cases and really cannot resolve it yourself, please feel free to ask the practical tutors for hints.
+ 
+Problem Description
+Objective
+This practical tests your knowledge of implementing classes with inheritance in mind. It also requires planned application of logic and code structure.
+Testing Hint: it’s easier if you test things as a small piece of code, rather than building a giant lump of code that doesn’t compile or run correctly. As part of your design, you should also sketch out how you are going to build and test each function in the code.
+Problem
+In this practical, you are going to improve your Rock Paper Scissors (RPS) program, allowing for greater flexibility. The rules are the same as before: two players compete by choosing Rock, Paper or Scissors and the winner of the game is determined by comparing the choices of the players. Rock beats Scissors, Scissors beats Paper, Paper beats Rock. This practical builds upon the previous practical. As such, we assume that in your implementation, there exist files named
+Human.cpp
+Computer.cpp
+Referee.cpp
+You are asked to modify these classes with the names provided in the following individual
+stages.
+New computer players: Create the following computer players making use of inheritance. You might use your computer player class from Practical 2 as the base class if there is a common behaviour across all computer player subclasses. (Note: the derived Avalanche class may be identical to your base class.)
+ 
+RandomComputer.cpp: RandomComputer returns a random move.
+Avalanche.cpp: Avalanche always chooses Rock.
+Bureaucrat.cpp: Bureaucrat always chooses Paper.
+Toolbox.cpp: Toolbox always chooses Scissors.
+Crescendo.cpp: Crescendo moves in the following order: Paper, Scissors, Rock.
+PaperDoll.cpp: Paper doll moves in the following order: Paper, Scissors, Scissors.
+FistfullODollars.cpp: FistfullODollars moves in the following order: Rock, Paper,Paper
+ 
+New referee: Previously, referee only matches one human player against one com-
+puter player. Here, your referee class should be able to match any two players
+together. (Hint: If you thought in advance in Practical 2 and implemented a common
+base class for all players, you may save some efforts in this practical)
+
+Tournament: Create a class called Tournament in file Tournament.h and Tournament.cpp . In Tournament.cpp there should be a function that sets eight players against each other. The bracket follows the illustration as follows. The rounds are run as illustrated in the picture below.
+In every round, the winner is determined after five plays (draws count as plays). That is, in every round, two players play against each other five times. The one who wins more advances. If both win the same number of plays, then the player with a lower index advances. (e.g. if Player2 and Player4 reach a tie after 5 plays, then Player2 advances.) Also, players ”refresh their memories” between rounds. That is, whenever Crescendo enters a round, it plays paper first.
+
+Tournament must provide a public function called run with the following interface:
+
+Player * run(array<Player *, 8> competitors)
+
+Screen Shot 2019-01-10 at 10.43.37 am.png
+The testing main function will create the players and a tournament object and then call the tournament run function with the array of player references. The player at competitor[N] is playerN+1 in the tournament.  For example, the player at competitor[0] is player1.
+
+run( ) should play the tournament as described above and return the grand winner.
+
+Example:
+If main creates the following player objects for the tournament:
+Avalanche Bureaucrat Bureaucrat Toolbox Toolbox Crescendo Crescendo FistfullODollars
+The winner should be:
+Toolbox
+Marking Scheme
+Interface (1 mark):
+– Compiles with test main which uses interface
+Functionality (2 marks):
+– Passing public test cases (1 mark)
+– Passing hidden test cases (1 mark)
